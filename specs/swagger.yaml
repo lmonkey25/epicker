@@ -1,0 +1,305 @@
+swagger: '2.0'
+info:
+  version: '1.0.0' 
+  title: MyEpicier API
+  description: MyEpicier distributed api
+  termsOfService: http://api.myepicier.com/terms/
+  contact:
+    name: MyEpicier technologies
+    email: contact@myepicier.com
+    url: http://api.myepicier.com
+  license:
+    name: MIT
+    url: http://opensource.org/licenses/MIT
+host: api.myepicier.com
+basePath: /
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /stores:
+    get:
+      description: Returns all stores the user can access to
+      operationId: getStores
+      produces:
+        - application/json
+        - application/xml
+        - text/xml
+        - text/html
+      parameters:
+        - name: tags
+          in: query
+          description: tags to filter by
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: csv
+        - name: limit
+          in: query
+          description: maximum number of results to return
+          required: false
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: list stores
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/store'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+  /stores/{id}:
+    get:
+      description: Returns a store based on id
+      operationId: findStoreById
+      produces:
+        - application/json
+        - application/xml
+        - text/xml
+        - text/html
+      parameters:
+        - name: id
+          in: path
+          description: ID of the store to fetch
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Result store
+          schema:
+            $ref: '#/definitions/store'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+  /coupons/{store_id}:  
+    get:
+      description: Get list of coupons
+      operationId: getCoupons
+      produces:
+        - application/json
+        - application/xml
+        - text/xml
+        - text/html
+      parameters:
+        - name: store_id
+          in: path
+          description: ID of the store to fetch
+          required: true
+          type: integer
+          format: int64
+        - name: tags
+          in: query
+          description: tags to filter by
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: csv   
+      responses:
+        '200':
+          description: list coupons
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/coupon'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+  /comments/{store_id}:
+    get:
+      description: Returns comments based on store id
+      operationId: findCommentsById
+      produces:
+        - application/json
+        - application/xml
+        - text/xml
+        - text/html
+      parameters:
+        - name: store_id
+          in: path
+          description: ID of the store to fetch comments from
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Result comments
+          schema:
+            $ref: '#/definitions/comment'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+    post:
+      description: Inserts a comment based on store id
+      operationId: postCommentById
+      produces:
+        - application/json
+        - application/xml
+        - text/xml
+        - text/html
+      parameters:
+        - name: store_id
+          in: path
+          description: ID of the store to post comment
+          required: true
+          type: integer
+        - name: username
+          in: formData
+          description: user which owns the comment
+          required: true
+          type: integer
+        - name: comment
+          in: formData 
+          description: comment contents
+          required: true
+          type: string
+        - name: rating
+          in: formData
+          description: star rating for this grocery
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: Result comments
+          schema:
+            $ref: '#/definitions/comment'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'      
+  /opened_status/{store_id}:
+    post:
+      description: Inserts opened or closed status
+      operationId: postOpenedStatus
+      produces:
+        - application/json
+        - application/xml
+        - text/xml
+        - text/html
+      parameters:
+        - name: store_id
+          in: path
+          description: ID of the store to post status
+          required: true
+          type: integer
+        - name: value
+          in: formData
+          description: user which owns the comment
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Result comments
+          schema:
+            $ref: '#/definitions/comment'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'            
+definitions:
+  store:
+    type: object
+    required:
+      - id
+      - name
+      - latitude 
+      - longitude
+      - opening_days
+      - rating
+    properties:
+      id:
+        type: integer
+        format: int64
+      name :
+        type: string
+        description: Name of the grocery store.
+      text_address :
+        type: string
+        description: Grocery real address.
+      phone :
+        type: string
+        description: Grocery phone, if exists.
+      latitude:
+        type: string
+      longitude :
+        type: string
+      opening :
+        type: string
+        description: Opening hour, in seconds (ex 10h00)
+      closing :
+        type: string
+        description:  Opening hour, in seconds (ex 20h00)
+      opening_days :
+        type: string
+        description: List of opening days (0,1,2,3), 0 is sunday.
+      rating :
+        type: integer
+        description: Rating for the grocery.
+      tag:
+        type: string
+        description: list of tags, used to enhance search
+  comment:
+    type: object
+    required:
+      - id
+      - username
+      - contents 
+      - store_id
+      - validated
+      - rating
+    properties:
+      id:
+        type: integer
+        format: int64
+      store_id :
+        type: integer
+      username :
+        type: string
+        description: Username for this comment
+      contents:
+        type: string
+      rating:
+        type: integer
+      validated :
+        type: boolean  
+  coupon:
+    type: object
+    required:
+      - id
+      - store_id
+      - name 
+      - image
+      - validated
+    properties:
+      id:
+        type: integer
+      store_id :
+        type: integer
+      name :
+        type: string
+      image:
+        type: string
+      validated :
+        type: boolean  
+  errorModel:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string

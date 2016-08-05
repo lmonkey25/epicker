@@ -1,0 +1,37 @@
+<ion-view view-title="Account">
+  <ion-content scroll="false" overflow-scroll="false">
+      <div class="list">
+      	   <label class="item item-input">
+      	   		<span class="input-label">Username</span>
+      	   		<input type="text" ng-model="settings.username">
+      	   </label>
+
+      	   <div class="item item-toggle">
+      	   		Location
+      	   		<p>if you disable, it may not works!</p>
+	      	   <label class="toggle">
+	      	   		<input type="checkbox" ng-model="settings.location">
+	      	   		<div class="track">
+	      	   			<div class="handle"></div>
+	      	   		</div>
+	      	   </label>
+      	    </div>
+      	    <label class="item item-input">
+      	    	<span class="input-label">Route calculation</span>
+      	    </label>
+      	    <div class="row no-padding">
+      	    	<div class="col no-padding">
+      	    		<ion-checkbox ng-model="settings.foot" ng-change="updateCarrier(true)">By foot</ion-checkbox>
+      	    	</div>
+      	    	<div class="col no-padding">
+      	    		<ion-checkbox ng-model="settings.car" ng-change="updateCarrier(false)">By car</ion-checkbox>
+      	    	</div>
+      	    </div>
+      	    <br>
+      	    <center>
+      	    	<button class="button button-positive" ng-click="save()">Save changes</button>
+      	    </center>      	    
+      </div>
+      <p class="version">My epicker version 0.3 alpha</p>
+  </ion-content>
+</ion-view>

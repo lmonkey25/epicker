@@ -1,0 +1,26 @@
+API documentation : 
+http://api.myepicier.com/docs/index.html
+
+API URL :
+http://api.myepicier.com/v1/
+
+GIT deposit : 
+https://erragreencontractor@bitbucket.org/erragreen/myepicier.git
+password: myep827E632
+
+Database viewing :
+https://phpmyadmin.ovh.net/index.php?pma_username=erraprodepici&pma_servername=erraprodepici.mysql.db
+password: myep827E632
+
+Back-office editing
+http://backoffice.myepicier.com/config
+user/password: myep827E632
+
+Attached : 
+YAML for swagger editing
+PHP file for API
+
+
+https://agora-file-storage-prod.s3.amazonaws.com/opening-attachments/334877540925331957?response-content-disposition=inline%3B%20filename%3D%22all-mockups.png%22&x-amz-security-token=FQoDYXdzEFwaDAj6pUzGAIXQ08mzMiKcAwrAuD%2FyhcuRS77cb7MS5YthIrCxffqfj%2BvFtP9cUOQDYB3Y3mqlZN3u3CwqZTAE4dxCvjOZ5UsSMMxd7CajxF6DYFC%2FfgMEycipB5SH9oIOBLOdTqyEaYIBuoDQCCOnw5XvYTqGZwMVkDmpXfPwRAxHmaPA6R9gbpEqOWcwD3jRG1Ere1zBQr3Yvgzm6rxAHbMssxABUA99ElDeqsP%2FnPbuvQFMaAW4AextMP6y4u4CyqYHbJM3KXKm1JT3UOiFlmfvCLYuwr57eyGHMiH23gtdc%2BFY3zkK2%2FZOiDUVtJVDtLMyOLZrtGs9TshUHRX%2B%2FNeXwNUr5FoFPBRTlravOf7QgBO2V4lD1GxS201tDB0m0uGsWkPnPOY%2B%2BzGyOfihT2F%2BcYV1xyn9rK1ccvFjra5v3GkQeQ36JwqF0oI2R%2FYfzz7w9V76JYLxbYUmjtz69lnE7xOHIjhxLTCzVLNlocwNdxPHHQUmJi4WkLgQjJv7Ep21FCoL%2FX5jBxkgbq9ST9drvNM5Y9l0yB2ECqFUwzVf8adjlvVQ77JdAB8ov4OCvQU%3D&AWSAccessKeyId=ASIAJD2TJXC4XWFS2S3A&Expires=1470163801&Signature=5u%2FXx243Wcjhk5et%2FWGIKQs78Iw%3D
+http://api.myepicier.com/docs/index.html
+http://editor.swagger.io/#/

@@ -1,0 +1,66 @@
+<ion-view view-title="Search">
+	<ion-content scroll="true" overflow-scroll="false">
+		<div class="row table-header">
+			<div class="col">
+				Grocery
+			</div>
+			<div class="col">
+				Opening
+			</div>
+			<div class="col">
+				Distance
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				Correfour
+			</div>
+			<div class="col">
+				{{info.opening}} to {{info.closing}}
+			</div>
+			<div class="col">
+				500m
+			</div>
+		</div>
+		<div class="row info-container">
+			<div class="call-icon">
+				<icon class="icon ion-android-call"></icon>
+			</div>
+			<div class="rating">
+				<span ng-if="info.rating >= 1">&starf;</span>
+				<span ng-if="info.rating < 1">&star;</span>
+				<span ng-if="info.rating >= 2">&starf;</span>
+				<span ng-if="info.rating < 2">&star;</span>
+				<span ng-if="info.rating >= 3">&starf;</span>
+				<span ng-if="info.rating < 3">&star;</span>
+				<span ng-if="info.rating >= 4">&starf;</span>
+				<span ng-if="info.rating < 4">&star;</span>
+				<span ng-if="info.rating >= 5">&starf;</span>
+				<span ng-if="info.rating < 5">&star;</span>
+			</div>
+			<p>{{info.text_address}}</p>
+		</div>
+		<div class="list">			
+			<div class="row" ng-repeat="comment in comments">
+				<div class="col col-33">
+					<icon class="icon ion-android-person"></icon>
+					{{comment.username}}
+				</div>
+				<div class="col">
+					<p>{{comment.contents}}</p>
+				</div>
+			</div>			
+		</div>
+		<div class="list">
+			<div class="item item-input">
+				<span class="input-label">John</span>
+				<input type="text">
+			</div>
+		</div>
+		<center>
+			<button class="button button-positive">
+				Post comment
+			</button>
+		</center>
+	</ion-content>
+</ion-view>
